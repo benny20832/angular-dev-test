@@ -9,7 +9,8 @@
   ></personal-info>
   } @case (wizardSteps.InvoiceWizardComponent) {
   <invoice-info
-    [data]="invoiceInfo"
+    [invoiceData]="invoiceInfo"
+    [personalData]="personalInfo"
     (switchStep)="setInvoiceInfo($event)"
     (prevStep)="setWizardStep(wizardSteps.PersonInfoWizardComponent)"
     (nextStep)="setWizardStep(wizardSteps.OverviewWizardComponent)"

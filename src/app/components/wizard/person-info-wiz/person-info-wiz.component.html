@@ -13,13 +13,16 @@
     </div>
     <div class="wizard-control">
       <label class="label">Nachname*</label>
-      <input
-        name="lastName"
-        type="text"
-        required
-        formControlName="lastName"
-      />
+      <input name="lastName" type="text" required formControlName="lastName" />
     </div>
+  </div>
+  <div class="wizard-control">
+    <input
+      type="checkbox"
+      name="transferToInvoice"
+      formControlName="transferToInvoice"
+    />
+    <label>Daten für Rechnungsinhaber übernehmen</label>
   </div>
 
   <div class="wizard-control">

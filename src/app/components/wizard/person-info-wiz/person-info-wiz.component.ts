@@ -32,6 +32,8 @@ export class PersonInfoWizardComponent implements OnInit {
   formGroup = new FormGroup(<PersonalDataForm>{
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
+    transferToInvoice: new FormControl(false, []),
+
   });
   private destroyRef = inject(DestroyRef);
 

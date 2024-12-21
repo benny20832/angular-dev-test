@@ -6,7 +6,8 @@ export interface Dto {
 
 export interface PersonalData {
     firstName: string,
-    lastName: string
+    lastName: string,
+    transferToInvoice: boolean
 }
 
 export interface InvoiceData {

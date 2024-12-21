@@ -15,7 +15,7 @@ import {
 } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NullableType } from '../../../util/nullableType';
-import { InvoiceData } from '../../../services/dto.interface';
+import { InvoiceData, PersonalData } from '../../../services/dto.interface';
 import { InvoiceForm } from '../../../util/types';
 
 @Component({
@@ -26,7 +26,8 @@ import { InvoiceForm } from '../../../util/types';
   styleUrl: '../wizard.component.scss',
 })
 export class InvoiceInfoWizardComponent implements OnInit {
-  @Input() data: NullableType<InvoiceData> = null;
+  @Input() personalData: NullableType<PersonalData> = null;
+  @Input() invoiceData: NullableType<InvoiceData> = null;
   @Output() nextStep = new EventEmitter<void>();
   @Output() prevStep = new EventEmitter<void>();
   @Output() switchStep = new EventEmitter<InvoiceData>();
@@ -42,8 +43,16 @@ export class InvoiceInfoWizardComponent implements OnInit {
 
   ngOnInit(): void {
     // set data when coming back from next step
-    if (this.data) {
-      this.formGroup.patchValue(this.data);
+    if (this.invoiceData) {
+      this.formGroup.patchValue(this.invoiceData);
+    }
+
+    // transfer data from first step
+    if (this.personalData && this.personalData.transferToInvoice) {
+      this.formGroup.patchValue({
+        firstName: this.personalData?.firstName,
+        lastName: this.personalData?.lastName,
+      });
     }
 
     this.formGroup.valueChanges
@@ -57,7 +66,6 @@ export class InvoiceInfoWizardComponent implements OnInit {
   }
 
   public next(): void {
-    console.log(this.data);
     if (this.formGroup.valid) {
       this.nextStep.emit();
     }
