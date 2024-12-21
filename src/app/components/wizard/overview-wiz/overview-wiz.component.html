@@ -1,0 +1,18 @@
+<h2>Bestellübersicht</h2>
+
+<h4>Ticketinhaber:</h4>
+<div><label>Vorname:</label> {{ personalData?.firstName }}</div>
+<div><label>Nachname:</label> {{ personalData?.lastName }}</div>
+
+<h4>Rechnungsinhaber:</h4>
+<div><label>Vorname:</label> {{ invoiceData?.firstName }}</div>
+<div><label>Nachname:</label> {{ invoiceData?.lastName }}</div>
+<div><label>Firma:</label> {{ invoiceData?.company }}</div>
+<div><label>Straße:</label> {{ invoiceData?.street }}</div>
+<div><label>Postleitzahl:</label> {{ invoiceData?.zipCode }}</div>
+<div><label>Ort:</label> {{ invoiceData?.city }}</div>
+
+<div class="wizard-control">
+  <button type="button" (click)="goBack()">Zurück</button>
+  <button type="button" (click)="next()">Bestellung abschließen</button>
+</div>

@@ -1,3 +1,26 @@
-<h1>Bestellprozess</h1>
+<h2>Bestellprozess</h2>
 
-<p>wizard to be implemented in task 1</p>
+<div class="wizard-content">
+  @switch (actualStep) { @case (wizardSteps.PersonInfoWizardComponent) {
+  <personal-info
+    [data]="personalInfo"
+    (nextStep)="setWizardStep(wizardSteps.InvoiceWizardComponent)"
+    (switchStep)="setPersonalInfo($event)"
+  ></personal-info>
+  } @case (wizardSteps.InvoiceWizardComponent) {
+  <invoice-info
+    [invoiceData]="invoiceInfo"
+    [personalData]="personalInfo"
+    (switchStep)="setInvoiceInfo($event)"
+    (prevStep)="setWizardStep(wizardSteps.PersonInfoWizardComponent)"
+    (nextStep)="setWizardStep(wizardSteps.OverviewWizardComponent)"
+  ></invoice-info>
+  } @case (wizardSteps.OverviewWizardComponent) {
+  <order-overview
+    [personalData]="personalInfo"
+    [invoiceData]="invoiceInfo"
+    (prevStep)="setWizardStep(wizardSteps.InvoiceWizardComponent)"
+    (nextStep)="submitData()"
+  ></order-overview>
+  } }
+</div>
