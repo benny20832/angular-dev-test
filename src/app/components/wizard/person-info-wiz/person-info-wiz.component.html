@@ -1,0 +1,32 @@
+<form (ngSubmit)="next()" [formGroup]="formGroup">
+  <h2>Ticketinhaber</h2>
+
+  <div>
+    <div class="wizard-control">
+      <label class="label">Vorname*</label>
+      <input
+        name="firstName"
+        type="text"
+        required
+        formControlName="firstName"
+      />
+    </div>
+    <div class="wizard-control">
+      <label class="label">Nachname*</label>
+      <input name="lastName" type="text" required formControlName="lastName" />
+    </div>
+  </div>
+  <div class="wizard-control">
+    <input
+      type="checkbox"
+      name="transferToInvoice"
+      formControlName="transferToInvoice"
+    />
+    <label>Daten für Rechnungsinhaber übernehmen</label>
+  </div>
+
+  <div class="wizard-control">
+    <button type="submit" [disabled]="!formGroup.valid">Weiter</button>
+  </div>
+  *Pflichtfelder
+</form>
