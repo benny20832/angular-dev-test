@@ -1,0 +1,34 @@
+<form (ngSubmit)="next()" [formGroup]="formGroup">
+  <h2>Rechnungsinhaber</h2>
+
+  <div class="wizard-control">
+    <label class="label">Vorname*</label>
+    <input name="firstName" type="text" required formControlName="firstName" />
+  </div>
+  <div class="wizard-control">
+    <label class="label">Nachname*</label>
+    <input name="lastName" type="text" required formControlName="lastName" />
+  </div>
+  <div class="wizard-control">
+    <label class="label">Firma</label>
+    <input matInput name="company" type="text" formControlName="company" />
+  </div>
+  <div class="wizard-control">
+    <label class="label">Straße</label>
+    <input name="street" type="text" required formControlName="street" />
+  </div>
+  <div class="wizard-control">
+    <label class="label">Postleitzahl*</label>
+    <input name="zipCode" type="text" required formControlName="zipCode" />
+  </div>
+  <div class="wizard-control">
+    <label class="label">Ort*</label>
+    <input matInput name="city" type="text" required formControlName="city" />
+  </div>
+
+  <div class="wizard-control">
+    <button type="button" (click)="goBack()">Zurück</button>
+    <button type="submit" [disabled]="!formGroup.valid">Weiter</button>
+  </div>
+  *Pflichtfelder
+</form>
