@@ -4,7 +4,7 @@
   @switch (actualStep) { @case (wizardSteps.PersonInfoWizardComponent) {
   <personal-info
     [data]="personalInfo"
-    (nextStep)="setWizardStep(wizardSteps.InvoiceWizardComponent)"
+    (nextStep)="setWizardStep(wizardSteps.UpgradesWizardComponent)"
     (switchStep)="setPersonalInfo($event)"
   ></personal-info>
   } @case (wizardSteps.InvoiceWizardComponent) {
@@ -12,15 +12,23 @@
     [invoiceData]="invoiceInfo"
     [personalData]="personalInfo"
     (switchStep)="setInvoiceInfo($event)"
-    (prevStep)="setWizardStep(wizardSteps.PersonInfoWizardComponent)"
+    (prevStep)="setWizardStep(wizardSteps.UpgradesWizardComponent)"
     (nextStep)="setWizardStep(wizardSteps.OverviewWizardComponent)"
   ></invoice-info>
   } @case (wizardSteps.OverviewWizardComponent) {
   <order-overview
     [personalData]="personalInfo"
     [invoiceData]="invoiceInfo"
+    [upgradeData]="upgradeInfo"
     (prevStep)="setWizardStep(wizardSteps.InvoiceWizardComponent)"
     (nextStep)="submitData()"
   ></order-overview>
+  } @case (wizardSteps.UpgradesWizardComponent) {
+  <upgrades-info
+    [data]="upgradeInfo"
+    (prevStep)="setWizardStep(wizardSteps.PersonInfoWizardComponent)"
+    (nextStep)="setWizardStep(wizardSteps.InvoiceWizardComponent)"
+    (optionChange)="setUpgradeInfo($event)"
+  ></upgrades-info>
   } }
 </div>

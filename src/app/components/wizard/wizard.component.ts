@@ -5,6 +5,8 @@ import { NullableType } from '../../util/nullableType';
 import { InvoiceInfoWizardComponent } from './invoice-info-wiz/invoice-info-wiz.component';
 import { OrderOverviewComponent } from './overview-wiz/overview-wiz.component';
 import { PersonInfoWizardComponent } from './person-info-wiz/person-info-wiz.component';
+import { OptionEnum } from './upgrades-wiz/upgrades-model';
+import { UpgradesWizardComponent } from './upgrades-wiz/upgrades-wiz.component';
 import { Steps } from './wizard-steps.enum';
 
 @Component({
@@ -14,6 +16,7 @@ import { Steps } from './wizard-steps.enum';
     PersonInfoWizardComponent,
     InvoiceInfoWizardComponent,
     OrderOverviewComponent,
+    UpgradesWizardComponent,
   ],
   templateUrl: './wizard.component.html',
   styleUrl: './wizard.component.scss',
@@ -24,6 +27,7 @@ export class WizardComponent {
   protected wizardSteps = Steps;
   personalInfo: NullableType<PersonalData> = null;
   invoiceInfo: NullableType<InvoiceData> = null;
+  upgradeInfo: NullableType<OptionEnum> = null;
 
   setWizardStep(step: Steps): void {
     this.actualStep = step;
@@ -37,6 +41,10 @@ export class WizardComponent {
     this.invoiceInfo = data;
   }
 
+  setUpgradeInfo(data: NullableType<OptionEnum>) {
+    this.upgradeInfo = data;
+  }
+
   submitData(): void {
     this.storeData();
     this.cleanup();
@@ -47,6 +55,7 @@ export class WizardComponent {
       this.apiService.store({
         personalData: this.personalInfo,
         invoiceData: this.invoiceInfo,
+        upgrades: this.upgradeInfo,
       });
     }
   }

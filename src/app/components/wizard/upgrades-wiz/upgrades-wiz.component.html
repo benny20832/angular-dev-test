@@ -1,0 +1,19 @@
+<h2>Optionen</h2>
+
+@for (ticketOption of ticketOptions; track ticketOption.value) {
+<div class="wizard-control">
+  <input
+    id="{{ ticketOption.value }}"
+    [value]="ticketOption.value"
+    type="radio"
+    name="ticketOption"
+    [formControl]="radioControl"
+  />
+  <label for="{{ ticketOption }}">{{ ticketOption.name }}</label>
+</div>
+
+}
+<div class="wizard-control">
+  <button type="button" (click)="goBack()">Zurück</button>
+  <button type="button" (click)="next()">Weiter</button>
+</div>

@@ -12,6 +12,9 @@
 <div><label>Postleitzahl:</label> {{ invoiceData?.zipCode }}</div>
 <div><label>Ort:</label> {{ invoiceData?.city }}</div>
 
+<h4>Optionen:</h4>
+<div>{{ bookedOption }}</div>
+
 <div class="wizard-control">
   <button type="button" (click)="goBack()">Zurück</button>
   <button type="button" (click)="next()">Bestellung abschließen</button>
