@@ -1,0 +1,19 @@
+:host {
+  .wizard-content {
+    background-color: rgb(235, 234, 234);
+    color: rgb(52, 51, 51);
+    font-family: Verdana, sans-serif;
+    margin: 10px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+  }
+
+  .wizard-control {
+    margin: 15px;
+  }
+  
+  .label {
+    display: block;
+  }
+}
