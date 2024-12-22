@@ -65,5 +65,6 @@ export class WizardComponent {
     this.setWizardStep(Steps.PersonInfoWizardComponent);
     this.setPersonalInfo(null);
     this.setInvoiceInfo(null);
+    this.setUpgradeInfo(null);
   }
 }

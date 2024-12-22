@@ -1,5 +1,10 @@
 <div>
   <h1>Bestellungen</h1>
+  @if(showSpinner){
+  <div class="spinner"></div>
+  <span>Daten werden geladen...</span>
+  }
+
   <table>
     <tr>
       <th>Ticketinhaber</th>
@@ -11,7 +16,7 @@
       <th>Option</th>
     </tr>
 
-    @for (data of orderData$ | async; track data.invoiceData) {
+    @for (data of apiService.orderList$ | async; track data.invoiceData) {
     <tr>
       <td>
         {{ data.personalData.firstName + " " + data.personalData.lastName }}
@@ -30,6 +35,29 @@
       <td>{{ data.upgrades | optionsPipe }}</td>
     </tr>
     }
-
   </table>
+  @if(!showSpinner){
+  <span
+    >Bestellungen {{ apiService.pagingData.offset + 1 }} bis
+    {{ apiService.pagingData.current }} von
+    {{ apiService.pagingData.count }}</span
+  >
+  }
+
+  <div>
+    <button
+      type="button"
+      (click)="previousPage()"
+      [disabled]="apiService.pagingData.offset === 0 || showSpinner"
+    >
+      vorherige Anzeigen
+    </button>
+    <button
+      type="button"
+      (click)="nextPage()"
+      [disabled]="lastPage || showSpinner"
+    >
+      weitere Anzeigen
+    </button>
+  </div>
 </div>
